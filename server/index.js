@@ -3,8 +3,14 @@ import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
 import cors from 'cors'
 
+import postRoutes from './routes/posts.js'
+
 // initialize the App
 const app = express()
+
+// Use express middleware to connect to our application
+// This set prefix of posts to all the routes: localhost:5000/posts
+app.use('/posts', postRoutes)
 
 // General setup
 app.use(bodyParser.json({ limit: '30mb', extended: true }))
